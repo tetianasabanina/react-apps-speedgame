@@ -1,0 +1,55 @@
+h1 {
+  font-size: 8vw;
+  color: #E47353;
+  margin: auto;
+  text-align: center;
+}
+
+.circles {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+button {
+  margin: 8px;
+  color: #FFFADE;
+  padding: 20px;
+  border-radius: 35px;
+  font-size: 1.2em;
+  font-weight: 600;
+  letter-spacing: 0.3rem;
+  /*box-shadow: 0 4px 8px 0 rgba(248, 246, 246, 0.5), 0 6px 20px 0 rgba(247, 245, 245, 0.5);*/
+  border: 5px solid #FFFADE;
+  font-family: 'Neucha', cursive;
+}
+
+button.start {
+  background-color: #007E6A;
+}
+
+button.stop {
+  background-color: #E47353;
+}
+
+button:active {
+  box-shadow: 0 4px 8px 0 rgba(248, 246, 246, 0.5), 0 6px 20px 0 rgba(247, 245, 245, 0.5);
+}
+
+div.score {
+  font-size: 2rem;
+  letter-spacing: 0.5rem;
+  color:#FFFADE;
+  font-weight: 600;
+  text-align: center;
+  margin: 3%;
+  white-space: pre-wrap;
+}
+

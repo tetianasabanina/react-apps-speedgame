@@ -1,0 +1,39 @@
+.gameOver {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: 100;
+    
+    background-color: rgba(35, 129, 160, 0.452);
+}
+.popUpBox {
+    position: relative;
+    width: auto;
+    height: auto;
+    margin: 100px 0 0 0;
+    padding: 0 5%;
+    justify-content: center;
+    text-align: center;
+    background-color: #FFFADE;
+    border-radius: 5px;
+    font-size: 2em;
+    color: rgba(35, 129, 160);
+}
+
+.popUpBox_button {
+    position: absolute;
+    margin: 0;
+    top: 0;
+    right: 0;
+    outline: none;
+    background-color: transparent;
+    color: rgb(160, 35, 35);
+    border: none;
+    font-size: 1em;
+}
+.popUpBox-text {
+    margin-top: 20%;
+}
