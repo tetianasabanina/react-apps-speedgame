@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/react-apps-speedgame/static/css/main.8d3c131e.chunk.css",
+    "main.js": "/react-apps-speedgame/static/js/main.7e26b42b.chunk.js",
+    "main.js.map": "/react-apps-speedgame/static/js/main.7e26b42b.chunk.js.map",
+    "runtime~main.js": "/react-apps-speedgame/static/js/runtime~main.7600015a.js",
+    "runtime~main.js.map": "/react-apps-speedgame/static/js/runtime~main.7600015a.js.map",
+    "static/js/2.97aeffc1.chunk.js": "/react-apps-speedgame/static/js/2.97aeffc1.chunk.js",
+    "static/js/2.97aeffc1.chunk.js.map": "/react-apps-speedgame/static/js/2.97aeffc1.chunk.js.map",
+    "index.html": "/react-apps-speedgame/index.html",
+    "precache-manifest.c86de0dfd6f3d89ca739eb260f9fea90.js": "/react-apps-speedgame/precache-manifest.c86de0dfd6f3d89ca739eb260f9fea90.js",
+    "service-worker.js": "/react-apps-speedgame/service-worker.js",
+    "static/css/main.8d3c131e.chunk.css.map": "/react-apps-speedgame/static/css/main.8d3c131e.chunk.css.map",
+    "static/media/Circle.css": "/react-apps-speedgame/static/media/mouse.fd3f395f.png"
+  }
+}
