@@ -1,4 +1,4 @@
-.levelSection {
+.speedSelectionSection {
   width: 100%;
   left: 0;
   top: 20%;
@@ -9,7 +9,7 @@
   color: #FFFADE;  
   font-size: 2em;
 }
-button.levelButton {
+button.speedButton {
     background-color: transparent;
     font-size: 1.2rem;
 }

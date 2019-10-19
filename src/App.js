@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 import Circle from './Components/Circle/Circle';
 import PopUpWindow from './Components/PopUpWindow/PopUpWindow';
-import LevelSection from './Components/Level/Level';
+import SpeedSelection from './Components/SpeedSelection/SpeedSelection';
 
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -14,10 +14,8 @@ class App extends Component {
     showPopUp: false,
     score: 0,
     counter: 0,
-    result: "hidden",
     current: 0,
-    level: "visible",
-    speed: undefined,
+    speed: 0,
     game: 'off',
   }
 
@@ -25,19 +23,25 @@ class App extends Component {
   pace = 0;
   text = "";
   
-  levelHandler=(levelButton) => {
-    console.log("button ", levelButton);
-    if (levelButton === 'slow') {
-      this.pace = 3000;
-      this.setState({speed: 'SLOW'});
-    } else {
-      this.pace = 1500;
-      this.setState({speed: 'FAST'});
+  onSpeedSelect = (speed) => {
+    console.log("speed ", speed);
+    this.setState({speed})
+    switch (speed) {
+      case ('SLOW'):
+        this.pace = 3000;
+        break;
+      case ('FAST'):
+        this.pace = 1500;
+        break;
+      default:
+        console.log("pace is undefined");
     }
     console.log("pace ", this.pace);
-    this.setState({level: 'hidden', result: 'visible'});
+    
   }
+
   next=()=>{
+    
     console.log("next");
     console.log("counter" , this.state.counter);
     let nextActive = undefined; // method inside component, needs variable
@@ -62,7 +66,7 @@ class App extends Component {
   clickHandler = (buttonClicked) => {
     console.log("click");
     console.log("counter" , this.state.counter);
-    if (this.state.result === "visible") {
+    if (this.state.game === 'on') {
       
       console.log("button clicked " + buttonClicked);
       if (buttonClicked !== this.state.current) {
@@ -76,8 +80,9 @@ class App extends Component {
   startHandler = () => {
     console.log("start");
     console.log("counter" , this.state.counter);
-    if (this.state.speed !== undefined) {
-    this.setState({result: 'visible', level: 'hidden', game: 'on'});
+    console.log("speed" , this.state.speed);
+    if (this.state.speed !== 0) {
+    this.setState({game: 'on'});
     this.next();
     } else {
       this.text = "Select speed first!";
@@ -86,12 +91,12 @@ class App extends Component {
   } 
 
   stopHandler = () => {
-    if (this.state.result === "visible" && this.state.game === 'on') {
+    if ( this.state.game === 'on') {
       console.log("stop");
       console.log("counter" , this.state.counter);
       clearTimeout(this.timer);
       this.text = "Game over! \n You've caught " + this.state.score + ' mice';
-      this.setState({ showPopUp: true, score: 0, counter: 0, result: 'hidden', current:0});
+      this.setState({ showPopUp: true, score: 0, counter: 0, current:0, speed: 0});
     }
   }
 
@@ -100,17 +105,27 @@ class App extends Component {
     console.log("counter" , this.state.counter);
     window.location.reload();
   }
-    
+  
+  
   render () {
+
+    const { speed } = this.state;
+
+    const Score = () => {
+      return (
+    <div className='score'>
+      Speed: {this.state.speed} -> Score : {this.state.score}
+      </div>
+      );
+    }
+
+    const stateLine = (speed===0) ? <SpeedSelection onSpeedSelect={this.onSpeedSelect} /> : <Score />;
+    
     return (
       <div>
         {this.state.showPopUp && <PopUpWindow click={this.PopUpWindowHandler} text= {this.text} score={this.state.score}/>}
         <h1>Cat & Mouse</h1>
-        <div className='levelSection' style={{visibility: this.state.level}}><p>Select speed: </p>
-          <LevelSection pace='Slow' click={()=>this.levelHandler('slow')}/>
-          <LevelSection pace='Fast' click={()=>this.levelHandler('fast')}/> 
-        </div>
-        <div className='score' style={{visibility: this.state.result}}>Speed: {this.state.speed} -> Score : {this.state.score}</div>
+        {stateLine}
         <div className="circles">
           <Circle buttonColor="#D3B1FA" active={this.state.current===1} click={()=>this.clickHandler(1)} />
           <Circle buttonColor="#00C9AA" active={this.state.current===2} click={()=>this.clickHandler(2)} />
